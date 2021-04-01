@@ -3,6 +3,7 @@ const ytdl = require('ytdl-core')
 
 const privateVoiceChannelID = process.env.FERDYBOT_SERVER_VC_ID
 const programmatoriAnonimiVoiceChannelID = process.env.PROG_ANONIMI_VC_ID
+const jaita28VoiceChannelID = process.env.JAITA28_VC_ID
 
 const compilation = {
     'Tool - Lateralus': 'https://www.youtube.com/watch?v=Y7JG63IuaWs&ab_channel=TOOLVEVO',
@@ -25,7 +26,7 @@ module.exports = {
     description: 'ti canto una canzoncina. Per caso conosci i Tool?',
     aliases: ['canta', 'suona'],
     execute: msg => {
-        const voiceChannel = msg.guild.channels.cache.get(programmatoriAnonimiVoiceChannelID)
+        const voiceChannel = msg.guild.channels.cache.get(privateVoiceChannelID)
         voiceChannel.join()
             .then(connection => {
                 const songTitle = random(Object.keys(compilation))
@@ -35,7 +36,7 @@ module.exports = {
                 msg.channel.send(`In riproduzione: ${songTitle}`)
                 setTimeout(
                     () => msg.channel.send(comments[songTitle]),
-                    10000
+                    5000
                 )
 
                 dispatcher.on('finish', () => voiceChannel.leave())

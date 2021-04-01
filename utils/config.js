@@ -1,7 +1,5 @@
 // da storare in un database online, in un prossimo futuro
 
-
-
 const prefix = '!'
 
 const sentences = [
@@ -28,19 +26,11 @@ const greetings = [
 
 const compliments = [
 	'bravo!',
-	'davvero un gran bel lavoro',
+	'avrei qualcosa da ridire, ma per il resto davvero un gran bel lavoro',
 	'good',
 	'mi piace',
 	'sono soddisfatto',
 ]
-
-const foods = [
-	'un salmone intero',
-	'un kebab',
-	'una pizza panna e salmone'
-]
-
-const muteTimer = 20000
 
 module.exports = {
 	prefix,
@@ -48,6 +38,4 @@ module.exports = {
 	girls,
 	greetings,
 	compliments,
-	foods,
-	muteTimer
 }

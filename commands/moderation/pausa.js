@@ -7,13 +7,15 @@ module.exports = {
         const member = msg.guild.members.cache.get(user.id)
 
         if (member) {
-            const role = msg.guild.roles.cache.find(role => role.name === 'In pausa')
             msg.channel.send(`Ti metto un attimo in pausa, ${user.username}.`)
+            /*
+            const role = msg.guild.roles.cache.find(role => role.name === 'In pausa')
             member.roles.add(role)
             setTimeout(
                 () => member.roles.remove(role),
                 3000
             )
+            */
         } else {
             msg.channel.send(`${msg.author}, ricorda di menzionare almeno una persona!`)
         }

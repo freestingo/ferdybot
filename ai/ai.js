@@ -38,7 +38,7 @@ const interpret = msg => {
             msg.reply(`ben arrivat${isFemale(msg.author) ? 'a' : 'o'}. ${random(greetings)}`)
             break
         case (content.includes('grazie ferdybot') && content):
-            msg.channel.send(`Tranquillo ${msg.author}, mi pagano.`)
+            msg.channel.send(`Tranquill${isFemale(msg.author) ? 'a' : 'o'} ${msg.author}, mi pagano.`)
             break
         case (content.includes('pasticciott') && content):
             msg.channel.send('Il pasticciotto leccese... gioia e letizia del mondo...')
@@ -46,12 +46,8 @@ const interpret = msg => {
         case (content.includes('caffè') && content):
             msg.channel.send('Ah, il caffè... la prova che Dio esiste.')
             break
-        case (content.includes('ferdybot') && content.includes('fame') && content):
-            msg.channel.send(`Oggi ho proprio voglia di ${random(foods)}.`)
-            break
         case (content.includes('stream') && content):
             msg.react('\u{1F621}')
-            msg.channel.send('Gli stream sono da fighetti.')
             break
         default:
             return

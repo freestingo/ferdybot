@@ -4,6 +4,8 @@ module.exports = {
     execute: msg => {
         msg.react('👍').then(() => msg.react('👎'))
 
+        msg.channel.send('questa funzionalità è ancora in rodaggio!')
+
         const filter = (reaction, user) => {
             return ['👍', '👎'].includes(reaction.emoji.name) && user.id === msg.author.id;
         }
