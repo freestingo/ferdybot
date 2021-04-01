@@ -5,6 +5,17 @@ const { doCmd, interpret } = require('./ai/ai')
 require('dotenv').config()
 
 const client = new Discord.Client()
+
+const eventFiles = fs.readdirSync('./events') //
+    .filter(file => file.endsWith('.js'))
+
+eventFiles.forEach(file => {
+    const event = require(`./events/${file}`)
+    event.once
+        ? client.once(event.name, (...args) => event.execute(...args, client))
+        : client.on(event.name, (...args) => event.execute(...args, client))
+})
+
 client.commands = new Discord.Collection()
 const commandFolders = fs.readdirSync('./commands')
 
@@ -20,12 +31,6 @@ commandFolders.forEach(folder => {
 
 client.login(process.env.BOT_TOKEN)
 
-client.once('ready', () => console.log('bot is ready!'))
-
-client.on('message', msg => {
-    if (msg.author.bot) return
-
-    msg.content.startsWith(prefix)
-        ? doCmd(msg)
-        : interpret(msg)
+process.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection:', error);
 })
