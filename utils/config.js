@@ -30,17 +30,6 @@ const compliments = [
 	'sono soddisfatto',
 ]
 
-/*
-	Enjoy the Silence
-	Blue Monday
-	Lateralus
-	Sgt. Peppers
-	Nightfall in Middle Earth
-*/
-const songs = [
-
-]
-
 const foods = [
 	'un salmone intero',
 	'un kebab',
@@ -55,7 +44,6 @@ module.exports = {
 	girls,
 	greetings,
 	compliments,
-	songs,
 	foods,
 	muteTimer
 }
