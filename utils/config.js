@@ -8,11 +8,12 @@ const sentences = [
     'Quando gli dei vogliono distruggere un uomo, prima lo rendono folle.',
 	'Un programmatore Java non ha una vita sentimentale.',
 	'Ragazzi, ricordate sempre la forza che spinge tutti noi a fare questo lavoro. I soldi.',
+	'Il diavolo chiede conto.',
 ]
 
 const girls = [
     'Oriella',
-    'Laura',
+    'Wyverinn',
 ]
 
 const greetings = [
@@ -21,11 +22,20 @@ const greetings = [
 	'Potresti accendere la cam per favore?',
 ]
 
+const compliments = [
+	'bravo!',
+	'davvero un gran bel lavoro',
+	'good',
+	'mi piace',
+	'sono soddisfatto',
+]
+
 /*
 	Enjoy the Silence
 	Blue Monday
 	Lateralus
 	Sgt. Peppers
+	Nightfall in Middle Earth
 */
 const songs = [
 
@@ -37,15 +47,6 @@ const foods = [
 	'una pizza panna e salmone'
 ]
 
-const helpMsg =	'\`\`\`'															+ '\n'
-			+	'ciao ferdybot -> saluto'											+ '\n'
-			+	'caffè         -> elogio il caffè'									+ '\n'
-			+	'pasticciotto  -> elogio i pasticciotti leccesi'					+ '\n'
-			+	'-rnd          -> dispenso una delle mie massime'					+ '\n'
-			+	'-pausa <tag>  -> metto un attimo in pausa la persona menzionata'	+ '\n'
-			+	'-marocchino   -> ti faccio vedere il mio caffè preferito'			+ '\n'
-			+	'\`\`\`'
-
 const muteTimer = 20000
 
 module.exports = {
@@ -53,8 +54,8 @@ module.exports = {
 	sentences,
 	girls,
 	greetings,
+	compliments,
 	songs,
 	foods,
-	helpMsg,
 	muteTimer
 }
