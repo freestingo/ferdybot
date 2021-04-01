@@ -8,15 +8,15 @@ const doCmd = (msg) => {
     const command = msg.client.commands.get(commandName) //
         || msg.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
 
-    if (command.args && !args.length) {
-        return msg.channel.send(
-            `Devi specificare degli argomenti per utilizzare questo comando, ${msg.author}.`
-        )
-    }
-
     if (!command) {
         return msg.channel.send(
             `Non conosco questo comando. Ti metto un attimo in pausa, ${msg.author}.`
+        )
+    }
+    
+    if (command.args && !args.length) {
+        return msg.channel.send(
+            `Devi specificare degli argomenti per utilizzare questo comando, ${msg.author}.`
         )
     }
 
@@ -48,6 +48,10 @@ const interpret = msg => {
             break
         case (content.includes('ferdybot') && content.includes('fame') && content):
             msg.channel.send(`Oggi ho proprio voglia di ${random(foods)}.`)
+            break
+        case (content.includes('stream') && content):
+            msg.react('\u{1F621}')
+            msg.channel.send('Gli stream sono da fighetti.')
             break
         default:
             return

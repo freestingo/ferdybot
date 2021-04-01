@@ -1,3 +1,7 @@
+// da storare in un database online, in un prossimo futuro
+
+
+
 const prefix = '!'
 
 const sentences = [

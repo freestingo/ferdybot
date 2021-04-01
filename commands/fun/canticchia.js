@@ -1,7 +1,8 @@
 const { random } = require('../../utils/helpers')
 const ytdl = require('ytdl-core')
 
-const voiceChannelID = '826931336844541966'
+const privateVoiceChannelID = process.env.FERDYBOT_SERVER_VC_ID
+const programmatoriAnonimiVoiceChannelID = process.env.PROG_ANONIMI_VC_ID
 
 const compilation = {
     'Tool - Lateralus': 'https://www.youtube.com/watch?v=Y7JG63IuaWs&ab_channel=TOOLVEVO',
@@ -12,10 +13,10 @@ const compilation = {
 }
 
 const comments = {
-    'Tool - Lateralus': 'Black... then... white are... all I see... in my infancy...',
+    'Tool - Lateralus': '🎵 black... then... white are... all I see... in my infancy... 🎵',
     'Depeche Mode - Enjoy the Silence': 'Sapete di che cosa parla in realtà questa canzone? :)',
     'Orgy - Blue Monday': 'Non mi assumo alcuna responsabilità per il titolo della band. Ma questo remix merita tantissimo.',
-    'The Beatles - Sgt. Peppers\' Lonely Hearts Club Band': 'we hope you will enjoy the show... lonely hearts... *sigh*',
+    'The Beatles - Sgt. Peppers\' Lonely Hearts Club Band': '🎵 we hope you will enjoy the show... 🎵 lonely hearts... *sigh*',
     'Blind Guardian - Nightfall in Middle Earth': 'un capolavoro.'
 }
 
@@ -24,7 +25,7 @@ module.exports = {
     description: 'ti canto una canzoncina. Per caso conosci i Tool?',
     aliases: ['canta', 'suona'],
     execute: msg => {
-        const voiceChannel = msg.guild.channels.cache.get(voiceChannelID)
+        const voiceChannel = msg.guild.channels.cache.get(programmatoriAnonimiVoiceChannelID)
         voiceChannel.join()
             .then(connection => {
                 const songTitle = random(Object.keys(compilation))
