@@ -23,11 +23,11 @@ const greetings = [
 ]
 
 const compliments = [
-	'Bravo!',
-	'Davvero un gran bel lavoro',
-	'Good',
-	'Mi piace',
-	'Sono soddisfatto',
+	'bravo!',
+	'davvero un gran bel lavoro',
+	'good',
+	'mi piace',
+	'sono soddisfatto',
 ]
 
 /*
@@ -35,6 +35,7 @@ const compliments = [
 	Blue Monday
 	Lateralus
 	Sgt. Peppers
+	Nightfall in Middle Earth
 */
 const songs = [
 
@@ -46,15 +47,6 @@ const foods = [
 	'una pizza panna e salmone'
 ]
 
-const helpMsg =	'\`\`\`'															+ '\n'
-			+	'ciao ferdybot -> saluto'											+ '\n'
-			+	'caffè         -> elogio il caffè'									+ '\n'
-			+	'pasticciotto  -> elogio i pasticciotti leccesi'					+ '\n'
-			+	'-rnd          -> dispenso una delle mie massime'					+ '\n'
-			+	'-pausa <tag>  -> metto un attimo in pausa la persona menzionata'	+ '\n'
-			+	'-marocchino   -> ti faccio vedere il mio caffè preferito'			+ '\n'
-			+	'\`\`\`'
-
 const muteTimer = 20000
 
 module.exports = {
@@ -65,6 +57,5 @@ module.exports = {
 	compliments,
 	songs,
 	foods,
-	helpMsg,
 	muteTimer
 }
