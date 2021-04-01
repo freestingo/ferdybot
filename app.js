@@ -3,7 +3,6 @@ const Discord = require('discord.js')
 const { prefix } = require('./utils/config')
 const { doCmd, interpret } = require('./ai/ai')
 require('dotenv').config()
-const { scheduleMessage } = require('./utils/crons')
 
 const client = new Discord.Client()
 client.commands = new Discord.Collection()
@@ -21,14 +20,7 @@ commandFolders.forEach(folder => {
 
 client.login(process.env.BOT_TOKEN)
 
-client.once('ready', () => {
-	console.log('bot is ready!')
-    scheduleMessage(
-        client,
-        17, 8, 0,
-        'Stasera mi mangio un salmone intero.'
-    )
-})
+client.once('ready', () => console.log('bot is ready!'))
 
 client.on('message', msg => {
     if (msg.author.bot) return

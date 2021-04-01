@@ -27,8 +27,8 @@ module.exports = {
 
 		data.push(`Nome comando: ${command.name}`)
 		if (command.aliases) data.push(`Alias: ${command.aliases.join(', ')}`)
-		if (command.description) data.push(`Descrizione: ${command.description}`);
-		if (command.usage) data.push(`Uso: ${prefix}${command.name} ${command.usage}`);
+		if (command.description) data.push(`Descrizione: ${command.description}`)
+		if (command.usage) data.push(`Uso: ${prefix}${command.name} ${command.usage}`)
 
 		msg.channel.send(data, { split: true })
 	},
