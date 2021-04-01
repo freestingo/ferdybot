@@ -8,17 +8,26 @@ const sentences = [
     'Quando gli dei vogliono distruggere un uomo, prima lo rendono folle.',
 	'Un programmatore Java non ha una vita sentimentale.',
 	'Ragazzi, ricordate sempre la forza che spinge tutti noi a fare questo lavoro. I soldi.',
+	'Il diavolo chiede conto.',
 ]
 
 const girls = [
     'Oriella',
-    'Laura',
+    'Wyverinn',
 ]
 
 const greetings = [
     'Oggi ci divertiamo.',
 	'Ci siete fino a qui?',
 	'Potresti accendere la cam per favore?',
+]
+
+const compliments = [
+	'Bravo!',
+	'Davvero un gran bel lavoro',
+	'Good',
+	'Mi piace',
+	'Sono soddisfatto',
 ]
 
 /*
@@ -53,6 +62,7 @@ module.exports = {
 	sentences,
 	girls,
 	greetings,
+	compliments,
 	songs,
 	foods,
 	helpMsg,

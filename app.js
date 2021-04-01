@@ -18,8 +18,6 @@ commandFolders.forEach(folder => {
     })
 })
 
-// test push
-
 client.login(process.env.BOT_TOKEN)
 
 client.once('ready', () => console.log('bot is ready!'))
