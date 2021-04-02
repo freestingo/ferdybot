@@ -65,12 +65,31 @@ const lunchTime = {
     ],
 }
 
+const affermatives = [
+    'sì',
+    'si',
+    'ok',
+    'va bene',
+    'certo',
+]
+
+const conscienceFound = [
+    'Good. Smutati però, per favore, se non hai rumori di fondo.',
+    'Bene. Vedete il mio Generation? Ci siete fino a qui?',
+]
+
+const conscienceNotFound = [
+    'Mi sento solo.',
+    'C\'è nessuno?... ragazzi... ???',
+    'Ferdinando triste.',
+]
+
 const serverId = process.env.PROG_ANONIMI_SERVER_ID
 const channelId = process.env.PROG_ANONIMI_GC_ID
 
 const dailyRoutine = client =>
     new CronJob({
-        cronTime: '* */15 * * * *',
+        cronTime: '0 */15 * * * *',
         onTick: () => {
             const { activity, type } = random(activities)
             client.user.setActivity(activity, type)
@@ -80,12 +99,28 @@ const dailyRoutine = client =>
 
 const askForConscience = client =>
     new CronJob({
-        cronTime: '* */10 * * * *',
-        onTick: () => {
-            const randomMember = client.guilds.cache //
-                .get(process.env.FERDYBOT_SERVER_ID)
-                .members.cache.random()
-            console.log(randomMember.user.username)
+        cronTime: '0 */50 9-17 * * *',
+        onTick: async () => {
+            const guild = client.guilds.cache.get(serverId)
+            const channel = guild.channels.cache.get(channelId)
+            const members = await guild.members.fetch()
+
+            const randomMember = members.random()
+            console.log('random member:', randomMember.user.username)
+
+            const filter = response => affermatives //
+                .some(consent => response.content.toLowerCase().includes(consent))
+
+            channel.send(`${randomMember.user.username}, vorresti farmi da coscienza per un po'?`)
+                .then(() => channel.awaitMessages(filter, { max: 1, time: 80000, errors: ['time'] }))
+                .then(collected => {
+                    channel.send(`${collected.some(reply =>
+                            reply.author.username === randomMember.user.username) //
+                                ? random(conscienceFound)
+                                : `Veramente l'avevo chiesto a ${randomMember.user.username}...`
+                    }`)
+                })
+                .catch(() => channel.send(random(conscienceNotFound)))
         }
     })
 

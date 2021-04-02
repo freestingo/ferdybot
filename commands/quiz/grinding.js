@@ -17,14 +17,13 @@ module.exports = {
             quiz.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase())
 
         msg.channel.send(quiz.question)
-            .then(() => msg.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
+            .then(() => msg.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] }))
             .then(collected =>
                 msg.channel.send(`Ottimo, ${collected.first().author}. ${random(encouragements)}`)
             )
             .catch(() =>
                 msg.channel.send('Nessuno? Davvero? Ferdinando triste.')
             )
-        )
     },
 }
 
