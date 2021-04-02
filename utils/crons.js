@@ -21,6 +21,24 @@ const activities = [
         },
     },
     {
+        activity: 'Depeche Mode - Enjoy the Silence',
+        type: {
+            type: 'LISTENING',
+        },
+    },
+    {
+        activity: 'The Beatles - Sgt. Peppers\' Lonely Hearts Club Band',
+        type: {
+            type: 'LISTENING',
+        },
+    },
+    {
+        activity: 'Blind Guardian - Nightfall in Middle Earth',
+        type: {
+            type: 'LISTENING',
+        },
+    },
+    {
         activity: 'Hearthstone',
         type: {
             type: 'PLAYING',
@@ -47,8 +65,8 @@ const lunchTime = {
     ],
 }
 
-const serverId = process.env.FERDYBOT_SERVER_ID
-const channelId = process.env.FERDYBOT_SERVER_GC_ID
+const serverId = process.env.PROG_ANONIMI_SERVER_ID
+const channelId = process.env.PROG_ANONIMI_GC_ID
 
 const dailyRoutine = client =>
     new CronJob({
@@ -58,6 +76,17 @@ const dailyRoutine = client =>
             client.user.setActivity(activity, type)
         },
         runOnInit: true,
+    })
+
+const askForConscience = client =>
+    new CronJob({
+        cronTime: '* */10 * * * *',
+        onTick: () => {
+            const randomMember = client.guilds.cache //
+                .get(process.env.FERDYBOT_SERVER_ID)
+                .members.cache.random()
+            console.log(randomMember.user.username)
+        }
     })
 
 const alertServer = (cronTime, message, client) =>
@@ -73,6 +102,12 @@ const alertServer = (cronTime, message, client) =>
 const lunchPlanning = client => alertServer(
     '00 50 12 * * *',
     `${random(lunchTime.prefix)} ${random(lunchTime.subfix)}.`,
+    client
+)
+
+const webexLesson = client => alertServer(
+    '00 00 09 * * 1-5',
+    'Benvenuti. Aspettiamo ancora due minuti, e poi si parte.',
     client
 )
 
@@ -96,7 +131,9 @@ const earlyBreak = client => alertServer(
 
 module.exports = {
     dailyRoutine,
+    askForConscience,
     lunchPlanning,
+    webexLesson,
     firstBreak,
     secondBreak,
     earlyBreak,

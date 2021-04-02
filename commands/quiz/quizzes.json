@@ -1,0 +1,10 @@
+[
+	{
+		"question": "Quando un metodo è invocabile tramite diversi set di argomenti si dice overriding o overloading?",
+		"answers": ["overloading"]
+	},
+	{
+		"question": "Qual è la forza che spinge tutti noi programmatori ad andare avanti?",
+		"answers": ["soldi", "i soldi", "denaro", "il denaro", "pecunia", "la pecunia", "schei", "gli schei"]
+	}
+]
